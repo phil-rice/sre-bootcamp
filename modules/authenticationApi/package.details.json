@@ -8,7 +8,6 @@
   "sre":         {
     "port":     8094,
     "verb":     "Post",
-    "dockerName": "authentication-api",
     "endpoint": "/authentication"
   },
   "guards":      {

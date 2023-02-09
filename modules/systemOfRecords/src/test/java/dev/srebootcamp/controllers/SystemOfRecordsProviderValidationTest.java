@@ -20,8 +20,8 @@ import org.springframework.test.web.servlet.MockMvc;
 
 @ExtendWith(SpringExtension.class)
 @Provider("systemofrecords")
-@PactFolder("../../pacts")
-//@PactBroker(url = "https://validoc.pactflow.io")
+//@PactFolder("../../pacts")
+@PactBroker(url = "https://validoc.pactflow.io")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class SystemOfRecordsProviderValidationTest {
 

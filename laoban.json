@@ -50,7 +50,7 @@
       "commands":    [
         {
           "name": "docker-build",
-          "command": "docker build  -t ${packageDetails.sre.dockerName}:0.0.0 -t ${packageDetails.sre.dockerName}:latest -f dockerfile --build-arg JAR_FILE=target/${packageDetails.name}-0.0.0.jar .",
+          "command": "docker build  -t ${packageDetails.name|toSnakeCase}:${version} -t ${packageDetails.name|toSnakeCase}:latest -f dockerfile --build-arg JAR_FILE=target/${packageDetails.name}-${version}.jar .",
           "status": true
         }
       ]
