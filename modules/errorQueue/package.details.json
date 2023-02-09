@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "errorQueue",
+  "description": "Errors can be posted here",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8097,
+    "verb":     "Post",
+    "endpoint": "/errors"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

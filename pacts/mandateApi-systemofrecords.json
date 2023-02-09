@@ -1,0 +1,42 @@
+{
+  "consumer": {
+    "name": "mandateApi"
+  },
+  "interactions": [
+    {
+      "description": "EndpointTest happy path",
+      "providerStates": [
+        {
+          "name": "test state"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/systemofrecords/mandate/1"
+      },
+      "response": {
+        "body": {
+          "accountId": "1001",
+          "customerId": "101",
+          "mandateId": "1",
+          "permissions": "all"
+        },
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.21"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "systemofrecords"
+  }
+}

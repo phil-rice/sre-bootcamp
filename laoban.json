@@ -1,0 +1,48 @@
+{
+  "packageManager": "yarn",
+  "parents": [
+    "@laoban@/laoban.json/core.laoban.json",
+    "@laoban@/laoban.json/javascript.laoban.json",
+    "@laoban@/laoban.json/typescript.laoban.json",
+    "@laoban@/laoban.json/typescript.publish.laoban.json",
+    "@laoban@/laoban.json/react.laoban.json",
+    "@laoban@/laoban.json/mvn.laoban.json"
+  ],
+  "properties": {
+    "license": "MIT",
+    "repository": "git@github.com:srebootcamp/sre-bootcamp.git"
+  },
+  "templates": {
+    "javascript": "@laoban@/templates/javascript",
+    "typescript": "@laoban@/templates/typescript_405",
+    "typescript_react": "@laoban@/templates/typescript_react",
+    "springboot-api": "templates/springboot-api"
+  },
+  "variables": {
+    "group": "dev.srebootcamp"
+  },
+  "defaultEnv": {
+    "NPM_TOKEN": ""
+  },
+  "scripts": {
+    "ls-endpoints": {
+      "description": "lists all the projects with an endpoint",
+      "commands": [
+        {
+          "guard": "${packageDetails.sre.port}",
+          "command": "js:process.cwd().padEnd(60) + '${packageDetails.sre.verb}'.padEnd(7) + '${packageDetails.sre.port}'.padEnd(6) + '${packageDetails.sre.endpoint}'"
+        }
+      ]
+    },
+    "run-apis": {
+      "description": "Runs the spring boot servers (the jar must exist in /target...",
+      "guard": "${packageDetails.sre.port}",
+      "commands": [
+        {
+          "name": "run-apis",
+          "command": "java -jar  .\\target\\${packageDetails.name}-${version}.jar --server.port=${packageDetails.sre.port}"
+        }
+      ]
+    }
+  }
+}

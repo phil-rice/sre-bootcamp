@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "approvalOrchestrationApi",
+  "description": "An api that does the work necessary to approve a request",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8096,
+    "verb":     "Post",
+    "endpoint": "/approvalOrchestration"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

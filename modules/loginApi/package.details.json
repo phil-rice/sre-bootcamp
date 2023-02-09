@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "loginApi",
+  "description": "An api that logins users",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8095,
+    "verb":     "Post",
+    "endpoint": "/login"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

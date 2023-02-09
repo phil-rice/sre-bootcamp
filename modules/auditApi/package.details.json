@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "auditApi",
+  "description": "The Audit API",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8090,
+    "verb":     "Post",
+    "endpoint": "/audit"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

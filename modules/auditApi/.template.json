@@ -1,0 +1,35 @@
+{
+  "files": [
+    {
+      "file":   ".template.json",
+      "target": ".template.json"
+    },
+    {
+      "file":      "src/main/resources/application.properties",
+      "target":    "src/main/resources/application.properties",
+      "templated": "${}"
+    },
+    {
+      "file":      "pom.xml",
+      "target":    "pom.xml",
+      "templated": "{{}}"
+    },
+    {
+      "file":      "src/main/java/dev/srebootcamp/ApiApplication.java",
+      "target":    "src/main/java/dev/srebootcamp/ApiApplication.java",
+      "templated": "${}"
+    },
+    {
+      "file":      "src/main/java/dev/srebootcamp/controllers/MockController.java",
+      "target":    "src/main/java/dev/srebootcamp/controllers/MockController.java",
+      "sample":    true,
+      "templated": "${}"
+    },
+    {
+      "file":      "src/test/java/dev/srebootcamp/controllers/EndpointTest.java",
+      "target":    "src/test/java/dev/srebootcamp/controllers/EndpointTest.java",
+      "sample":    true,
+      "templated": "${}"
+    }
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "mandatesApi",
+  "description": "An api that returns information about the mandates for the customer.",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8093,
+    "verb":     "Get",
+    "endpoint": "/mandates"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "fraudDetectionApi",
+  "description": "An api that detects fraud",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8092,
+    "verb":     "Get",
+    "endpoint": "/fraud"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

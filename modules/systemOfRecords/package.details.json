@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "systemOfRecords",
+  "description": "The system of records for the customer and mandate",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8098,
+    "verb":     "Get",
+    "endpoint": "/systemOfRecords/[customer|Mandate]/{id}"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

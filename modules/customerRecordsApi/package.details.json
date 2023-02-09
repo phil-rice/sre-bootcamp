@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "customerRecordsApi",
+  "description": "APIs that wrap the system of records for customer data",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8091,
+    "verb":     "Get",
+    "endpoint": "/customer"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

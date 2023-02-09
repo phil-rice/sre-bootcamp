@@ -1,0 +1,19 @@
+{
+  "template":    "springboot-api",
+  "name":        "authenticationApi",
+  "description": "An api that authenticates users",
+  "mvn":         {
+  },
+  "links":       [],
+  "sre":         {
+    "port":     8094,
+    "verb":     "Post",
+    "endpoint": "/authentication"
+  },
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}
