@@ -4,7 +4,7 @@
   "description": "APIs that wrap the system of records for customer data",
   "mvn":         {
   },
-  "links":       [],
+  "links":       ["systemOfRecords"],
   "sre":         {
     "port":     8091,
     "verb":     "Get",

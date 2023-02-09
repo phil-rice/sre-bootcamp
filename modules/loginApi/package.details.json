@@ -4,7 +4,7 @@
   "description": "An api that logins users",
   "mvn":         {
   },
-  "links":       [],
+  "links":       ["authenticationApi"],
   "sre":         {
     "port":     8095,
     "verb":     "Post",

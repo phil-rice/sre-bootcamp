@@ -16,8 +16,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @Provider("authenticationApi")
-@PactFolder("../../pacts")
-
+@PactBroker(url = "https://validoc.pactflow.io")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class AuthenticationProviderValidationTest {
 

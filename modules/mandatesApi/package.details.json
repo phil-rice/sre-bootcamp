@@ -4,7 +4,7 @@
   "description": "An api that returns information about the mandates for the customer.",
   "mvn":         {
   },
-  "links":       [],
+  "links":       ["systemOfRecords"],
   "sre":         {
     "port":     8093,
     "verb":     "Get",
