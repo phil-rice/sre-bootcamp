@@ -4,6 +4,7 @@ import au.com.dius.pact.provider.junit5.HttpTestTarget;
 import au.com.dius.pact.provider.junit5.PactVerificationContext;
 import au.com.dius.pact.provider.junitsupport.Provider;
 import au.com.dius.pact.provider.junitsupport.State;
+import au.com.dius.pact.provider.junitsupport.loader.PactBroker;
 import au.com.dius.pact.provider.junitsupport.loader.PactFolder;
 import au.com.dius.pact.provider.spring.junit5.MockMvcTestTarget;
 import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider;
@@ -20,6 +21,7 @@ import org.springframework.test.web.servlet.MockMvc;
 @ExtendWith(SpringExtension.class)
 @Provider("systemofrecords")
 @PactFolder("../../pacts")
+//@PactBroker(url = "https://validoc.pactflow.io")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class SystemOfRecordsProviderValidationTest {
 
@@ -34,6 +36,7 @@ public class SystemOfRecordsProviderValidationTest {
 
     @BeforeEach
     void before(PactVerificationContext context) {
+
         System.out.println("System of records port: " + systemOfRecordsPort);
         context.setTarget(new HttpTestTarget("localhost", systemOfRecordsPort));
     }

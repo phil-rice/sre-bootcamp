@@ -1,0 +1,19 @@
+# Logfile created on 2023-02-09 11:48:13 +0100 by logger.rb/56815
+I, [2023-02-09T11:49:17.066623 #16640]  INFO -- : Running example 'Verifying a pact between loginApi and authenticationApi Given test state EndpointTest happy path with POST /authentication returns a response which has status code 200'
+I, [2023-02-09T11:49:17.066623 #16640]  INFO -- : Sending POST request to path: "/authentication" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"test state"}]}, see debug logs for body
+D, [2023-02-09T11:49:17.066623 #16640] DEBUG -- : body :{"password":"admin","username":"admin"}
+I, [2023-02-09T11:49:17.143449 #16640]  INFO -- : Running example 'Verifying a pact between loginApi and authenticationApi Given test state EndpointTest unhappy path with POST /authentication returns a response which has status code 401'
+I, [2023-02-09T11:49:17.143449 #16640]  INFO -- : Sending POST request to path: "/authentication" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"test state"}]}, see debug logs for body
+D, [2023-02-09T11:49:17.143449 #16640] DEBUG -- : body :{"password":"notadmin","username":"admin"}
+I, [2023-02-09T11:49:35.915388 #4888]  INFO -- : Running example 'Verifying a pact between loginApi and authenticationApi Given test state EndpointTest happy path with POST /authentication returns a response which has status code 200'
+I, [2023-02-09T11:49:35.916388 #4888]  INFO -- : Sending POST request to path: "/authentication" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"test state"}]}, see debug logs for body
+D, [2023-02-09T11:49:35.916388 #4888] DEBUG -- : body :{"password":"admin","username":"admin"}
+I, [2023-02-09T11:49:37.242979 #4888]  INFO -- : Received response with status: 401, headers: {"Date"=>"Thu, 09 Feb 2023 10:49:38 GMT", "Content-Type"=>"text/plain", "Connection"=>"keep-alive", "Vary"=>"Accept", "X-Pact-Broker-Version"=>"2.106.0", "X-Content-Type-Options"=>"nosniff", "Strict-Transport-Security"=>"max-age=63072000; includeSubDomains; preload", "X-Pact-Broker-Git-Sha"=>"b15c6703", "X-Pactflow-Git-Sha"=>"7b4527bb4", "X-Request-Id"=>"f775a4af42de5aae5a20cab64bc3a39f", "Content-Length"=>"88"}, see debug logs for body
+D, [2023-02-09T11:49:37.243935 #4888] DEBUG -- : body: Unauthorized. Please see https://docs.pactflow.io/docs/login-help for more information.
+
+I, [2023-02-09T11:49:37.273295 #4888]  INFO -- : Running example 'Verifying a pact between loginApi and authenticationApi Given test state EndpointTest unhappy path with POST /authentication returns a response which has status code 401'
+I, [2023-02-09T11:49:37.274305 #4888]  INFO -- : Sending POST request to path: "/authentication" with headers: {"X_PACT_PROVIDER_STATES"=>[{"name"=>"test state"}]}, see debug logs for body
+D, [2023-02-09T11:49:37.274305 #4888] DEBUG -- : body :{"password":"notadmin","username":"admin"}
+I, [2023-02-09T11:49:38.540797 #4888]  INFO -- : Received response with status: 401, headers: {"Date"=>"Thu, 09 Feb 2023 10:49:39 GMT", "Content-Type"=>"text/plain", "Connection"=>"keep-alive", "Vary"=>"Accept", "X-Pact-Broker-Version"=>"2.106.0", "X-Content-Type-Options"=>"nosniff", "Strict-Transport-Security"=>"max-age=63072000; includeSubDomains; preload", "X-Pact-Broker-Git-Sha"=>"b15c6703", "X-Pactflow-Git-Sha"=>"7b4527bb4", "X-Request-Id"=>"1fdfff68dc18cb1a1cae0e0513bf9254", "Content-Length"=>"88"}, see debug logs for body
+D, [2023-02-09T11:49:38.540797 #4888] DEBUG -- : body: Unauthorized. Please see https://docs.pactflow.io/docs/login-help for more information.
+

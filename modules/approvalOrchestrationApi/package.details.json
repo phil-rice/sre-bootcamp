@@ -8,6 +8,7 @@
   "sre":         {
     "port":     8096,
     "verb":     "Post",
+    "dockerName": "approval_orchestration_api",
     "endpoint": "/approvalOrchestration"
   },
   "guards":      {

@@ -1,15 +1,14 @@
 {
   "template":    "springboot-api",
-  "name":        "authenticationApi",
-  "description": "An api that authenticates users",
+  "name":        "gatewayApi",
+  "description": "The gateway api in front of other apis.",
   "mvn":         {
   },
   "links":       [],
   "sre":         {
-    "port":     8094,
-    "verb":     "Post",
-    "dockerName": "authentication-api",
-    "endpoint": "/authentication"
+    "port":     8099,
+    "verb":     "Get",
+    "endpoint": "/"
   },
   "guards":      {
     "compile": true,

@@ -10,6 +10,11 @@
       "templated": "${}"
     },
     {
+      "file":      "dockerfile",
+      "target":    "dockerfile",
+      "templated": "{{}}"
+    },
+    {
       "file":      "pom.xml",
       "target":    "pom.xml",
       "templated": "{{}}"

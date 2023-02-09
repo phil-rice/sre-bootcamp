@@ -1,6 +1,6 @@
 {
   "packageManager": "yarn",
-  "parents": [
+  "parents":        [
     "@laoban@/laoban.json/core.laoban.json",
     "@laoban@/laoban.json/javascript.laoban.json",
     "@laoban@/laoban.json/typescript.laoban.json",
@@ -8,39 +8,61 @@
     "@laoban@/laoban.json/react.laoban.json",
     "@laoban@/laoban.json/mvn.laoban.json"
   ],
-  "properties": {
-    "license": "MIT",
+  "properties":     {
+    "license":    "MIT",
     "repository": "git@github.com:srebootcamp/sre-bootcamp.git"
   },
-  "templates": {
-    "javascript": "@laoban@/templates/javascript",
-    "typescript": "@laoban@/templates/typescript_405",
+  "templates":      {
+    "javascript":       "@laoban@/templates/javascript",
+    "typescript":       "@laoban@/templates/typescript_405",
     "typescript_react": "@laoban@/templates/typescript_react",
-    "springboot-api": "templates/springboot-api"
+    "springboot-api":   "templates/springboot-api"
   },
-  "variables": {
+  "variables":      {
     "group": "dev.srebootcamp"
   },
-  "defaultEnv": {
+  "defaultEnv":     {
     "NPM_TOKEN": ""
   },
-  "scripts": {
+  "scripts":        {
     "ls-endpoints": {
       "description": "lists all the projects with an endpoint",
-      "commands": [
+      "commands":    [
         {
-          "guard": "${packageDetails.sre.port}",
-          "command": "js:process.cwd().padEnd(60) + '${packageDetails.sre.verb}'.padEnd(7) + '${packageDetails.sre.port}'.padEnd(6) + '${packageDetails.sre.endpoint}'"
+          "guard":   "${packageDetails.sre.port}",
+          "command": "js:process.cwd().padEnd(60) + '${packageDetails.sre.verb}'.padEnd(7) + '${packageDetails.sre.port}'.padEnd(6) + '   ${packageDetails.sre.endpoint}'.padEnd(30) + '${packageDetails.sre.dockerName}:latest'"
         }
       ]
     },
-    "run-apis": {
+    "run-apis":     {
       "description": "Runs the spring boot servers (the jar must exist in /target...",
-      "guard": "${packageDetails.sre.port}",
-      "commands": [
+      "guard":       "${packageDetails.sre.port}",
+      "commands":    [
         {
-          "name": "run-apis",
+          "name":    "run-apis",
           "command": "java -jar  .\\target\\${packageDetails.name}-${version}.jar --server.port=${packageDetails.sre.port}"
+        }
+      ]
+    },
+    "docker-build": {
+      "description": "Compiles the docker image",
+      "guard":       "${packageDetails.sre.port}",
+      "commands":    [
+        {
+          "name": "docker-build",
+          "command": "docker build  -t ${packageDetails.sre.dockerName}:0.0.0 -t ${packageDetails.sre.dockerName}:latest -f dockerfile --build-arg JAR_FILE=target/${packageDetails.name}-0.0.0.jar .",
+          "status": true
+        }
+      ]
+    },
+    "docker-run": {
+      "description": "Runs the docker image",
+      "guard":       "${packageDetails.sre.port}",
+      "commands":    [
+        {
+          "name": "docker-run",
+          "command": "docker run -p ${packageDetails.sre.port}:${packageDetails.sre.port} ${packageDetails.sre.dockerName}:latest",
+          "status": true
         }
       ]
     }
