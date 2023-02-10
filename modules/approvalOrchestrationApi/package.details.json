@@ -4,7 +4,7 @@
   "description": "An api that does the work necessary to approve a request",
   "mvn":         {
   },
-  "links":       [],
+  "links":       ["customerRecordsApi", "mandatesApi", "fraudDetectionApi", "errorQueue", "auditApi"],
   "sre":         {
     "port":     8096,
     "verb":     "Post",

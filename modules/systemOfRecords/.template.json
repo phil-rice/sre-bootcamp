@@ -35,6 +35,11 @@
       "target":    "src/test/java/dev/srebootcamp/controllers/EndpointTest.java",
       "sample":    true,
       "templated": "${}"
+    },
+    {
+      "file":      "src/test/resources/system_props.properties",
+      "target":    "src/test/resources/system_props.properties",
+      "templated": "${}"
     }
   ]
 }

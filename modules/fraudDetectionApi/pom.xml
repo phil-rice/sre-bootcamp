@@ -10,7 +10,7 @@
     </parent>
     <groupId>dev.srebootcamp</groupId>
     <artifactId>fraudDetectionApi</artifactId>
-    <version>0.0.0</version>
+    <version>0.0.1</version>
     <name>fraudDetectionApi</name>
     <description>An api that detects fraud</description>
     <properties>
@@ -47,6 +47,13 @@
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertiesFile>src/test/resources/system_props.properties</systemPropertiesFile>
+                </configuration>
             </plugin>
         </plugins>
     </build>

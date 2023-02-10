@@ -48,6 +48,13 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>${maven-surefire-plugin.version}</version>
+                <configuration>
+                    <systemPropertiesFile>src/test/resources/system_props.properties</systemPropertiesFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 

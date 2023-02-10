@@ -27,6 +27,7 @@
   "scripts":        {
     "ls-endpoints": {
       "description": "lists all the projects with an endpoint",
+      "inLinksOrder": true,
       "commands":    [
         {
           "guard":   "${packageDetails.sre.port}",
@@ -47,6 +48,7 @@
     "docker-build": {
       "description": "Compiles the docker image",
       "guard":       "${packageDetails.sre.port}",
+      "inLinksOrder": true,
       "commands":    [
         {
           "name": "docker-build",
