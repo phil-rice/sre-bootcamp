@@ -1,29 +1,34 @@
 package dev.srebootcamp.domain.payments;
 
-import java.util.function.Function;
+import dev.srebootcamp.utils.FunctionWithError;
 
 public record PaymentMapper(
-        Function<Payment, IPayment> mapPayment,
-        Function<NewPayment, IPayment> mapNewPayment
+        FunctionWithError<Payment, IPayment> mapPayment,
+        FunctionWithError<NewPayment, IPayment> mapNewPayment
 
 ) {
     public IPayment map(IPayment payment) {
-        if (payment instanceof Payment) return mapPayment.apply((Payment) payment);
-        if (payment instanceof NewPayment) return mapNewPayment.apply((NewPayment) payment);
-        throw new RuntimeException("Unknown payment type");
+        try {
+            if (payment instanceof Payment) return mapPayment.apply((Payment) payment);
+            if (payment instanceof NewPayment) return mapNewPayment.apply((NewPayment) payment);
+            throw new RuntimeException("Unknown payment type");
+        } catch (Exception e) {
+            if (e instanceof RuntimeException) throw (RuntimeException) e;
+            throw new RuntimeException("Error mapping payment", e);
+        }
     }
 
-    public static <P extends IPayment> Function<P, IPayment> error(String msg) {
+    public static <P extends IPayment> FunctionWithError<P, IPayment> error(String msg) {
         return p -> {
             throw new RuntimeException(msg);
         };
     }
 
-    public static PaymentMapper onlyNewPayment(String errorMsg, Function<NewPayment, IPayment> mapNewPayment) {
+    public static PaymentMapper onlyNewPayment(String errorMsg, FunctionWithError<NewPayment, IPayment> mapNewPayment) {
         return new PaymentMapper(error(errorMsg), mapNewPayment);
     }
 
-    public static PaymentMapper onlyPayment(String errorMsg, Function<Payment, IPayment> mapPayment) {
+    public static PaymentMapper onlyPayment(String errorMsg, FunctionWithError<Payment, IPayment> mapPayment) {
         return new PaymentMapper(mapPayment, error(errorMsg));
     }
 

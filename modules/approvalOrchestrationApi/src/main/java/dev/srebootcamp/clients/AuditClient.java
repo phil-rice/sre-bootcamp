@@ -1,6 +1,7 @@
 package dev.srebootcamp.clients;
 
-import dev.srebootcamp.domain.Mandate;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import dev.srebootcamp.domain.Customer;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
@@ -10,21 +11,20 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 @Service
-public class MandateClient {
-    @Value("mandate.client.url")
-    public String mandateClientUrl;
+public class AuditClient {
+    @Value("audit.client.url")
+    public String auditClientUrl;
 
     final private RestTemplate rest = new RestTemplate();
     final private HttpHeaders headers = new HttpHeaders();
 
-    public MandateClient() {
+    public AuditClient() {
         this.headers.add("Content-Type", "application/json");
     }
 
-    public Mandate getMandateForCustomer(String customerId) {
-        HttpEntity<Mandate> requestEntity = new HttpEntity<>(headers);
-        ResponseEntity<Mandate> responseEntity = rest.exchange(mandateClientUrl + "/mandate?customer_id=" +customerId, HttpMethod.GET, requestEntity, Mandate.class);
-        return responseEntity.getBody();
+    public void audit(String msg) throws JsonProcessingException {
+        HttpEntity<String> requestEntity = new HttpEntity<>("{\"msg\":\"" + msg + "\"}", headers);
+        rest.exchange(auditClientUrl + "/audit", HttpMethod.POST, requestEntity, Customer.class);
     }
 
 

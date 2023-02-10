@@ -13,6 +13,10 @@ public class Basket implements IBasket {
         this.idGenerator = idGenerator;
     }
 
+    public void putForTests(String id, IPayment payment) {
+        database.put(id, payment);
+    }
+
     IdGenerator idGenerator;
 
     private Map<String, IPayment> database = Collections.synchronizedMap(new HashMap<>());
@@ -32,7 +36,8 @@ public class Basket implements IBasket {
 
     @Override
     public Optional<IPayment> map(String id, PaymentMapper paymentMapper) {
-        Optional<IPayment> result = getPayment(id).map(paymentMapper::map);
+        Optional<IPayment> initialPayment = getPayment(id);
+        Optional<IPayment> result = initialPayment.map(paymentMapper::map);
         result.ifPresent(payment -> database.put(id, payment));
         return result;
     }

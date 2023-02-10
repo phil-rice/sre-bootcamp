@@ -1,0 +1,47 @@
+{
+  "consumer": {
+    "name": "approvalOrchestrationApi"
+  },
+  "interactions": [
+    {
+      "description": "mandate request",
+      "providerStates": [
+        {
+          "name": "test state"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/mandate",
+        "query": {
+          "customer_id": [
+            "fromCustomerId"
+          ]
+        }
+      },
+      "response": {
+        "body": {
+          "accountId": "fromAccountId",
+          "customerId": "fromCustomerId",
+          "mandateId": "someMandateId",
+          "permissions": "somePermissions"
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.21"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "mandateApi"
+  }
+}

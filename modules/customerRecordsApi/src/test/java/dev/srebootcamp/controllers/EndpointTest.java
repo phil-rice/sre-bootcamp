@@ -55,8 +55,6 @@ public class EndpointTest {
     @Test
     @ExtendWith(PactVerificationSpringProvider.class)
     public void test_mandates_api(MockServer server) throws Exception {
-        System.out.println("Url: " + server.getUrl());
-        System.out.println("Url: " + server.getPort());
         client.customerClientUrl = server.getUrl();
         mockMvc.perform(get("/customer/1")
                         .contentType("application/json"))
