@@ -11,6 +11,7 @@ import au.com.dius.pact.core.model.annotations.Pact;
 import au.com.dius.pact.core.model.annotations.PactDirectory;
 import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider;
 import dev.srebootcamp.clients.AuditClient;
+import dev.srebootcamp.clients.CustomerClient;
 import dev.srebootcamp.clients.MandateClient;
 import dev.srebootcamp.domain.payments.TestIdGenerator;
 import dev.srebootcamp.domain.payments.TestIdGeneratorConfig;
@@ -59,6 +60,9 @@ public class EndpointTest {
     @Autowired
     MandateClient mandateClient;
 
+    @Autowired
+    CustomerClient customerClient;
+
     RequestResponsePact createAuditPact(PactDslWithProvider builder, int status, String sentBody) {
         return builder
                 .given("test state")
@@ -93,10 +97,13 @@ public class EndpointTest {
     Basket basket;
 
     @BeforeEach
-    public void setup(@ForProvider("auditApi") MockServer auditServer, @ForProvider("mandateApi") MockServer mandateServer) {
+    public void setup(@ForProvider("auditApi") MockServer auditServer,
+                      @ForProvider("mandateApi") MockServer mandateServer,
+                      @ForProvider("customerApi") MockServer customerServer) {
         idGenerator.reset();
         auditClient.auditClientUrl = auditServer.getUrl();
         mandateClient.mandateClientUrl = mandateServer.getUrl();
+        customerClient.customerClientUrl = customerServer.getUrl();
     }
 
     @Pact(consumer = "approvalOrchestrationApi", provider = "auditApi")
@@ -176,7 +183,22 @@ public class EndpointTest {
                 .toPact();
     }
 
-    @PactTestFor(providerName = "approvalOrchestrationApi", pactMethods = {"pactForPaymentAccept", "mandatePactForPaymentAccept"})
+    @Pact(consumer = "approvalOrchestrationApi", provider = "customerApi")
+    public RequestResponsePact customerPactForPaymentAccept(PactDslWithProvider builder) {
+        return builder
+                .given("test state")
+                .uponReceiving("customer request")
+                .path("/customer/" + payment.payer().customerId())
+                .method("GET")
+                .willRespondWith()
+                .status(200)
+                .body(fromCustomerJson)
+                .headers(Map.of("Content-Type", "application/json; charset=utf-8"))
+                .toPact();
+    }
+
+    @PactTestFor(providerName = "approvalOrchestrationApi",
+            pactMethods = {"pactForPaymentAccept", "mandatePactForPaymentAccept", "customerPactForPaymentAccept"})
     @Test
     public void test_payment_payment_accept() throws Exception {
         basket.putForTests(paymentId, payment);

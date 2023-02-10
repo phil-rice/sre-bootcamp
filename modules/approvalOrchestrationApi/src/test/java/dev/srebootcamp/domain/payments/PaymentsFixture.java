@@ -1,14 +1,13 @@
 package dev.srebootcamp.domain.payments;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import dev.srebootcamp.domain.CustomerAndAccount;
-import dev.srebootcamp.domain.Mandate;
-import dev.srebootcamp.domain.Money;
-import dev.srebootcamp.domain.Payer;
+import dev.srebootcamp.domain.*;
 import dev.srebootcamp.service.IdGenerator;
 
 public interface PaymentsFixture {
     CustomerAndAccount mrFrom = new CustomerAndAccount("fromCustomerId", "fromAccountId");
+
+    Customer fromCustomer = new Customer(mrFrom.customerId(), "fromCustomerName");
     CustomerAndAccount mrsTo = new CustomerAndAccount("toCustomerId", "toAccountId");
     Money amount = new Money(100);
 
@@ -42,6 +41,6 @@ public interface PaymentsFixture {
     String approvedJson = json(approvedPayment);
 
     String mandateJson = json(mandate);
-
+    String fromCustomerJson = json(fromCustomer);
 
 }

@@ -18,7 +18,7 @@ import java.util.concurrent.Callable;
 public class MockController {
 
     @Autowired
-    CustomerClient customer;
+    CustomerClient customerClient;
     @Autowired
     MandateClient mandateClient;
     @Autowired
@@ -62,9 +62,12 @@ public class MockController {
     public ResponseEntity<IPayment> approvePaymentEndpoint(@PathVariable String id) throws Exception {
         return result(audit("approve " + id, () -> basket.map(id, PaymentMapper.onlyPayment("Can only approve a payment that has been given a mandate", payment -> {
             var mandate = mandateClient.getMandateForCustomer(payment.payer().customerId());
-            if (mandate.mandateId().equals(payment.payer().mandateId()))
-                if (mandate.accountId().equals(payment.payer().accountId()))
-                    return payment.approve();
+            var customer = customerClient.getCustomer(payment.payer().customerId());
+            if (customer == null || customer.id() == null) throw new RuntimeException("Customer does not exist");
+            if (customer.id().equals(payment.payer().customerId())) //really just checking the customer exists...
+                if (mandate.mandateId().equals(payment.payer().mandateId()))
+                    if (mandate.accountId().equals(payment.payer().accountId()))
+                        return payment.approve();
             throw new RuntimeException("Mandate does not match payment");
         }))));
     }
