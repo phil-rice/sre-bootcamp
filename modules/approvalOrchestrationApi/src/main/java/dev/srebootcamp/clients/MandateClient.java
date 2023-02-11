@@ -23,7 +23,7 @@ public class MandateClient {
 
     public Mandate getMandateForCustomer(String customerId) {
         HttpEntity<Mandate> requestEntity = new HttpEntity<>(headers);
-        ResponseEntity<Mandate> responseEntity = rest.exchange(mandateClientUrl + "/mandate?customer_id=" +customerId, HttpMethod.GET, requestEntity, Mandate.class);
+        ResponseEntity<Mandate> responseEntity = rest.exchange(mandateClientUrl + "/mandates?customer_id=" +customerId, HttpMethod.GET, requestEntity, Mandate.class);
         return responseEntity.getBody();
     }
 

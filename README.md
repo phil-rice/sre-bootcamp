@@ -21,3 +21,9 @@ To publish a pact
 ```shell
 pact-broker publish .\pacts --consumer-app-version 1.0.0 --branch master  
 ```
+
+To run pact tests that need to launch the pact stubber you need to get the pact stubber docker image. 
+This is launched and shutdown by the pact test runner
+```shell
+docker pull pactfoundation/pact-stub-server
+```

@@ -35,6 +35,16 @@
         }
       ]
     },
+    "mvn-test": {
+      "description": "runs all the mvn tests",
+      "inLinksOrder": true,
+      "commands":    [
+        {
+          "guard":   "${packageDetails.guards.mvn}",
+          "command": "mvn test"
+        }
+      ]
+    },
     "run-apis":     {
       "description": "Runs the spring boot servers (the jar must exist in /target...",
       "guard":       "${packageDetails.sre.port}",

@@ -27,8 +27,13 @@ public class MandateClient {
 
     public Mandate getMandateByCustomerId(String id) throws JsonProcessingException {
         HttpEntity<Mandate> requestEntity = new HttpEntity<>(headers);
-        ResponseEntity<Mandate> responseEntity = rest.exchange(mandateClientUrl + "/systemofrecords/mandate/" + id, HttpMethod.GET, requestEntity, Mandate.class);
-        return responseEntity.getBody();
+        String url = mandateClientUrl + "/systemofrecords/mandate/" + id;
+        ResponseEntity<String> responseEntity = rest.exchange(url, HttpMethod.GET, requestEntity, String.class);
+        String body = responseEntity.getBody();
+        System.out.println("Recevied from" + url + ":" + body);
+        Mandate result = mapper.readValue(body, Mandate.class);
+        System.out.println("   which from" + url + " is " + result);
+        return result;
     }
 
 

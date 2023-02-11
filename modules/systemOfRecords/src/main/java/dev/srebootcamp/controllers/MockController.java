@@ -26,6 +26,6 @@ public class MockController {
 
     @GetMapping(value = "/systemofrecords/mandate/{id}", produces = "application/json")
     public String mandateEndPoint(@PathVariable String id) throws Exception {
-        return objectMapper.writeValueAsString(mandateService.getMandate(id));
+        return objectMapper.writeValueAsString(mandateService.getMandateFromCustomerId(id));
     }
 }

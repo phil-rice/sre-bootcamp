@@ -133,8 +133,8 @@ public class EndpointTest {
         basket.putForTests(paymentId, newPayment);
         mockMvc.perform(post("/payment/" + paymentId + "/mandate")
                         .content(mandateJson).contentType("application/json; charset=utf-8"))
-                .andExpect(content().string(paymentJson))
-                .andExpect(status().isOk());
+                .andExpect(status().isOk())
+                .andExpect(content().string(paymentJson));
         assertEquals(Optional.of(payment), basket.getPayment(paymentId));
     }
 
@@ -174,7 +174,7 @@ public class EndpointTest {
         return builder
                 .given("test state")
                 .uponReceiving("mandate request")
-                .path("/mandate").query("customer_id=fromCustomerId")
+                .path("/mandates").query("customer_id=fromCustomerId")
                 .method("GET")
                 .willRespondWith()
                 .status(200)
