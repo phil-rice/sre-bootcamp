@@ -34,12 +34,21 @@
             <groupId>au.com.dius.pact.provider</groupId>
             <artifactId>junit5spring</artifactId>
             <version>${pact.version}</version>
+            <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>au.com.dius.pact.consumer</groupId>
             <artifactId>junit5</artifactId>
             <version>${pact.version}</version>
+            <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>{{group}}</groupId>
+            <artifactId>pactTesting</artifactId>
+            <version>{{version}}</version>
+            <scope>test</scope>
+        </dependency>
+
     </dependencies>
 
     <build>
@@ -54,6 +63,18 @@
                 <configuration>
                     <systemPropertiesFile>src/test/resources/system_props.properties</systemPropertiesFile>
                 </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-failsafe-plugin</artifactId>
+                <version>2.22.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>integration-test</goal>
+                            <goal>verify</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

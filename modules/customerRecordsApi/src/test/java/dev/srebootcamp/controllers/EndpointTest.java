@@ -32,14 +32,14 @@ public class EndpointTest {
     @Autowired
     private MockMvc mockMvc;
 
-    String expectedBody ="{\"id\":\"1\",\"name\":\"Customer 1\"}";
+    String expectedBody ="{\"id\":\"fromCustomerId\",\"name\":\"Customer fromCustomerId\"}";
 
     @Pact(provider = "systemofrecords", consumer = "customerRecordsApi")
     public RequestResponsePact createPactHappyPath(PactDslWithProvider builder) {
         return builder
                 .given("test state")
                 .uponReceiving("EndpointTest happy path")
-                .path("/systemofrecords/customer/1")
+                .path("/systemofrecords/customer/fromCustomerId")
                 .method("GET")
                 .willRespondWith()
                 .status(200)
@@ -56,7 +56,7 @@ public class EndpointTest {
     @ExtendWith(PactVerificationSpringProvider.class)
     public void test_mandates_api(MockServer server) throws Exception {
         client.customerClientUrl = server.getUrl();
-        mockMvc.perform(get("/customer/1")
+        mockMvc.perform(get("/customer/fromCustomerId")
                         .contentType("application/json"))
                 .andExpect(MockMvcResultMatchers.content().string(expectedBody))
                 .andExpect(status().isOk());

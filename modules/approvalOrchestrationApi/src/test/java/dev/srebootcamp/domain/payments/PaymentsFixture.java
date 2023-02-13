@@ -7,7 +7,7 @@ import dev.srebootcamp.service.IdGenerator;
 public interface PaymentsFixture {
     CustomerAndAccount mrFrom = new CustomerAndAccount("fromCustomerId", "fromCustomerId_acc_id");
 
-    Customer fromCustomer = new Customer(mrFrom.customerId(), "fromCustomerName");
+    Customer fromCustomer = new Customer(mrFrom.customerId(), "Customer fromCustomerId");
     CustomerAndAccount mrsTo = new CustomerAndAccount("toCustomerId", "toAccountId");
     Money amount = new Money(100);
 

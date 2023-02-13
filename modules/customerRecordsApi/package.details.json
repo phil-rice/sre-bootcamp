@@ -6,9 +6,10 @@
   },
   "links":       ["systemOfRecords"],
   "sre":         {
-    "port":     8091,
-    "verb":     "Get",
-    "endpoint": "/customer"
+    "port":         8091,
+    "verb":         "Get",
+    "endpoint":     "/customer",
+    "providerport": 8072
   },
   "guards":      {
     "compile": true,

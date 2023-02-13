@@ -98,8 +98,8 @@ public class EndpointTest {
 
     @BeforeEach
     public void setup(@ForProvider("auditApi") MockServer auditServer,
-                      @ForProvider("mandateApi") MockServer mandateServer,
-                      @ForProvider("customerApi") MockServer customerServer) {
+                      @ForProvider("mandatesApi") MockServer mandateServer,
+                      @ForProvider("customerRecordsApi") MockServer customerServer) {
         idGenerator.reset();
         auditClient.auditClientUrl = auditServer.getUrl();
         mandateClient.mandateClientUrl = mandateServer.getUrl();
@@ -169,7 +169,7 @@ public class EndpointTest {
         return createAuditPact(builder, 200, "approve somePaymentId0 succeeded");
     }
 
-    @Pact(consumer = "approvalOrchestrationApi", provider = "mandateApi")
+    @Pact(consumer = "approvalOrchestrationApi", provider = "mandatesApi")
     public RequestResponsePact mandatePactForPaymentAccept(PactDslWithProvider builder) {
         return builder
                 .given("test state")
@@ -183,7 +183,7 @@ public class EndpointTest {
                 .toPact();
     }
 
-    @Pact(consumer = "approvalOrchestrationApi", provider = "customerApi")
+    @Pact(consumer = "approvalOrchestrationApi", provider = "customerRecordsApi")
     public RequestResponsePact customerPactForPaymentAccept(PactDslWithProvider builder) {
         return builder
                 .given("test state")

@@ -6,9 +6,10 @@
   },
   "links":       ["systemOfRecords"],
   "sre":         {
-    "port":     8093,
-    "verb":     "Get",
-    "endpoint": "/mandates"
+    "port":         8093,
+    "verb":         "Get",
+    "endpoint":     "/mandates",
+    "providerport": 8071
   },
   "guards":      {
     "compile": true,

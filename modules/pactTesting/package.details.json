@@ -1,0 +1,14 @@
+{
+  "template":    "springboot-library",
+  "name":        "pactTesting",
+  "description": "Utilities to help with pact testing",
+  "mvn":         {
+  },
+  "links":       [],
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

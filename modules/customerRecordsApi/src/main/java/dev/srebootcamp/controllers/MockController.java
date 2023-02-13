@@ -15,7 +15,7 @@ public class MockController {
     @Autowired
     ObjectMapper mapper;
 
-    @GetMapping(value = "/customer/{id}", produces = "application/json")
+    @GetMapping(value = "/customer/{id}", produces = "application/json;charset=utf-8")
     public String endPoint(@PathVariable String id) throws Exception {
         return mapper.writeValueAsString(customerClient.getCustomer(id));
     }

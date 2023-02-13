@@ -4,11 +4,12 @@
   "description": "The system of records for the customer and mandate",
   "mvn":         {
   },
-  "links":       [],
+  "links":       ["pactTesting"],
   "sre":         {
-    "port":     8098,
-    "verb":     "Get",
-    "endpoint": "/systemOfRecords/[customer|Mandate]/{id}"
+    "port":         8098,
+    "providerport": 8070,
+    "verb":         "Get",
+    "endpoint":     "/systemOfRecords/[customer|Mandate]/{id}"
   },
   "guards":      {
     "compile": true,
