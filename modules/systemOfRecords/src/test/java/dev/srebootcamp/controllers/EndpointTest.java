@@ -25,6 +25,6 @@ public class EndpointTest {
     public void test_systemOfRecords_mandate_endpoint() throws Exception {
         mockMvc.perform(get("/systemofrecords/mandate/1"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("{\"mandateId\":\"1_man\",\"customerId\":\"1\",\"accountId\":\"1_acc_id\",\"permissions\":\"all\"}"));
+                .andExpect(content().string("[{\"mandateId\":\"1_man\",\"customerId\":\"1\",\"accountId\":\"1_acc_id\",\"permissions\":\"all\"}]"));
     }
 }

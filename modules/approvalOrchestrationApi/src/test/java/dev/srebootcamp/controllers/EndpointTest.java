@@ -153,7 +153,7 @@ public class EndpointTest {
     @PactTestFor(pactMethod = "pactForPaymentReject")
     public void test_newPayment_reject() throws Exception {
         basket.putForTests(paymentId, newPayment);
-        mockMvc.perform(post("/payment/" + paymentId + "/reject").content(mandateJson).contentType("application/json; charset=utf-8"))
+        mockMvc.perform(post("/payment/" + paymentId + "/reject"))
                 .andExpect(content().string(rejectedJson))
                 .andExpect(status().isOk());
         assertEquals(Optional.of(rejectedPayment), basket.getPayment(paymentId));
@@ -164,7 +164,7 @@ public class EndpointTest {
     @PactTestFor(pactMethod = "pactForPaymentReject")
     public void test_payment__reject() throws Exception {
         basket.putForTests(paymentId, payment);
-        mockMvc.perform(post("/payment/" + paymentId + "/reject").content(mandateJson).contentType("application/json; charset=utf-8"))
+        mockMvc.perform(post("/payment/" + paymentId + "/reject"))
                 .andExpect(content().string(rejectedJson))
                 .andExpect(status().isOk());
         assertEquals(Optional.of(rejectedPayment), basket.getPayment(paymentId));
@@ -184,7 +184,7 @@ public class EndpointTest {
                 .method("GET")
                 .willRespondWith()
                 .status(200)
-                .body(mandateJson)
+                .body("["+ mandateJson + "]")
                 .headers(Map.of("Content-Type", "application/json; charset=utf-8"))
                 .toPact();
     }

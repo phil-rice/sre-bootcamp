@@ -32,7 +32,7 @@ public class EndpointTest {
     @Autowired
     private MockMvc mockMvc;
 
-    String expectedBody = "{\"mandateId\":\"fromCustomerId_man\",\"customerId\":\"fromCustomerId\",\"accountId\":\"fromCustomerId_acc_id\",\"permissions\":\"all\"}";
+    String expectedBody = "[{\"mandateId\":\"fromCustomerId_man\",\"customerId\":\"fromCustomerId\",\"accountId\":\"fromCustomerId_acc_id\",\"permissions\":\"all\"}]";
 
     @Pact(provider = "systemofrecords", consumer = "mandatesApi")
     public RequestResponsePact createPactHappyPath(PactDslWithProvider builder) {

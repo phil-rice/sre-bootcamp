@@ -67,7 +67,10 @@ public class MockController {
     @PostMapping(value = "/payment/{id}/approve", produces = "application/json")
     public ResponseEntity<IPayment> approvePaymentEndpoint(@PathVariable String id) throws Exception {
         return result(audit("approve " + id, () -> basket.map(id, PaymentMapper.onlyPayment("Can only approve a payment that has been given a mandate", payment -> {
-            var mandate = mandateClient.getMandateForCustomer(payment.payer().customerId());
+            var mandates = mandateClient.getMandateForCustomer(payment.payer().customerId());
+            var validMandates = mandates.stream().filter(m -> m.matches(payment)).findFirst();
+            if (validMandates.isEmpty()) throw new RuntimeException("No valid mandate found");
+            var mandate = validMandates.get();
             var customer = customerClient.getCustomer(payment.payer().customerId());
             var fraud = fraudClient.detectFraud(new DetectFraudData(payment.payer().customerId(), payment.payee().customerId(), Double.toString(payment.amount().amount())));
             if (fraud == null) throw new RuntimeException("Fraud detection failed");

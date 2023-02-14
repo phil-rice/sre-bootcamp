@@ -20,12 +20,14 @@
         }
       },
       "response": {
-        "body": {
-          "accountId": "fromCustomerId_acc_id",
-          "customerId": "fromCustomerId",
-          "mandateId": "fromCustomerId_man",
-          "permissions": "all"
-        },
+        "body": [
+          {
+            "accountId": "fromCustomerId_acc_id",
+            "customerId": "fromCustomerId",
+            "mandateId": "fromCustomerId_man",
+            "permissions": "all"
+          }
+        ],
         "headers": {
           "Content-Type": "application/json; charset=utf-8"
         },
