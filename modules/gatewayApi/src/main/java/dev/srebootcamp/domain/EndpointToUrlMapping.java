@@ -5,10 +5,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Map;
 
-@Component
+@Service
 @PropertySource("classpath:gateway.properties")
 public class EndpointToUrlMapping implements IEndpointToUrlMapping {
 
@@ -30,7 +31,7 @@ public class EndpointToUrlMapping implements IEndpointToUrlMapping {
         String key = StringUtils.firstSegment(urlString);
         String url = endpointToUrlMapping.get(key);
         if (url == null)
-            throw new RuntimeException("No mapping found for " + urlString + " key is [" + key + "]. Legal values are " + endpointToUrlMapping.keySet());
+            throw new NoGatewayException("No mapping found for " + urlString + " key is [" + key + "]. Legal values are " + endpointToUrlMapping.keySet());
         return url;
     }
 }

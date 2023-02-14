@@ -1,7 +1,13 @@
 package dev.srebootcamp.domain;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.SpringBootTestContextBootstrapper;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.test.context.BootstrapWith;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.net.MalformedURLException;
 import java.util.Map;
@@ -18,13 +24,4 @@ class EndpointToUrlMappingTest {
         assertEquals("loginUrl", endpointToUrlMapping.getBaseUrlFor("/login/one/two"));
     }
 
-    @Autowired
-    IEndpointToUrlMapping mapping;
-
-//    @Test
-    void testGetBaseUrlFor2() throws MalformedURLException {
-        EndpointToUrlMapping mapping2 = (EndpointToUrlMapping) mapping;
-        assertEquals(Map.of(), mapping2.endpointToUrlMapping);
-
-    }
 }

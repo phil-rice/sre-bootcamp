@@ -2,11 +2,12 @@ package dev.srebootcamp;
 
 import dev.srebootcamp.domain.IEndpointToUrlMapping;
 import dev.srebootcamp.utils.StringUtils;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
 
-@Component
+@TestConfiguration
 public class MockEndpointToUrlMapping implements IEndpointToUrlMapping {
 
     Map<String, String> endpointToUrlMapping = Map.of(

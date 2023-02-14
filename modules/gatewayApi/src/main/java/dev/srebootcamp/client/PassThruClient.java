@@ -21,9 +21,14 @@ public class PassThruClient implements IPassThruClient {
 
     final private RestTemplate rest = new RestTemplate();
 
-    public ResponseEntity<String> passThru(String baseUrl, Request request){
-        return rest.exchange(baseUrl + request.url(),
-                HttpMethod.valueOf(request.method()),
-                new HttpEntity<String>(request.body(), request.headers()), String.class);
+    public ResponseEntity<String> passThru(String baseUrl, Request request) {
+        String url = baseUrl + request.url();
+        try {
+            return rest.exchange(url,
+                    HttpMethod.valueOf(request.method()),
+                    new HttpEntity<String>(request.body(), request.headers()), String.class);
+        } catch (Exception e) {
+            throw new GatewayException( url, e);
+        }
     }
 }
