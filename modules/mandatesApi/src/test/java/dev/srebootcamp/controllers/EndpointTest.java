@@ -27,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ExtendWith(PactConsumerTestExt.class)
 @PactTestFor(providerName = "systemofrecords")
 @AutoConfigureMockMvc
-@PactDirectory("../../pacts")
+@PactDirectory("../../pacts/new")
 public class EndpointTest {
     @Autowired
     private MockMvc mockMvc;

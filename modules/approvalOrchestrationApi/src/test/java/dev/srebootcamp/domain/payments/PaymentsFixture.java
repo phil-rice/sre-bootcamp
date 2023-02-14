@@ -11,6 +11,8 @@ public interface PaymentsFixture {
     CustomerAndAccount mrsTo = new CustomerAndAccount("toCustomerId", "toAccountId");
     Money amount = new Money(100);
 
+    DetectFraudData detectFraudData = new DetectFraudData(mrFrom.customerId(), mrsTo.customerId(), Double.toString(amount.amount()));
+    DetectFraudResponse detectFraudResponse = new DetectFraudResponse(false);
     String paymentId = "somePaymentId0";
     Mandate mandate = new Mandate("fromCustomerId_man", mrFrom.customerId(), mrFrom.accountId(), "all");
     Payer mrFromAsFullPayer = new Payer(mrFrom.customerId(), mrFrom.accountId(), mandate.mandateId(), mandate.permissions());
@@ -42,5 +44,9 @@ public interface PaymentsFixture {
 
     String mandateJson = json(mandate);
     String fromCustomerJson = json(fromCustomer);
+
+    String detectFraudDataJson = json(detectFraudData);
+
+    String detectFraudResponseJson = json(detectFraudResponse);
 
 }

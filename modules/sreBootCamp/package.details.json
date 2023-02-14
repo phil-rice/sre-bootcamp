@@ -1,0 +1,14 @@
+{
+  "template":    "springboot-library",
+  "name":        "sreBootCamp",
+  "description": "The 'whole application' for such things as testing, etc.",
+  "mvn":         {
+  },
+  "links":       ["approvalOrchestrationApi"],
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

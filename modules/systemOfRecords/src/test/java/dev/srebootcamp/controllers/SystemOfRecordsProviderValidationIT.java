@@ -15,7 +15,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 @ExtendWith(SpringExtension.class)
 @Provider("systemofrecords")
-@PactFolder("../../pacts")
+@PactFolder("../../pacts/accepted")
 //@PactBroker(url = "https://validoc.pactflow.io")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 public class SystemOfRecordsProviderValidationIT {

@@ -3,7 +3,9 @@ package dev.srebootcamp.controllers;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.srebootcamp.clients.AuditClient;
 import dev.srebootcamp.clients.CustomerClient;
+import dev.srebootcamp.clients.FraudClient;
 import dev.srebootcamp.clients.MandateClient;
+import dev.srebootcamp.domain.DetectFraudData;
 import dev.srebootcamp.domain.Mandate;
 import dev.srebootcamp.domain.payments.*;
 import dev.srebootcamp.service.IBasket;
@@ -26,6 +28,10 @@ public class MockController {
 
     @Autowired
     AuditClient audit;
+
+    @Autowired
+    FraudClient fraudClient;
+
     @Autowired
     ObjectMapper mapper;
 
@@ -63,6 +69,9 @@ public class MockController {
         return result(audit("approve " + id, () -> basket.map(id, PaymentMapper.onlyPayment("Can only approve a payment that has been given a mandate", payment -> {
             var mandate = mandateClient.getMandateForCustomer(payment.payer().customerId());
             var customer = customerClient.getCustomer(payment.payer().customerId());
+            var fraud = fraudClient.detectFraud(new DetectFraudData(payment.payer().customerId(), payment.payee().customerId(), Double.toString(payment.amount().amount())));
+            if (fraud == null) throw new RuntimeException("Fraud detection failed");
+            if (fraud) throw new RuntimeException("Fraud detected");
             if (customer == null || customer.id() == null) throw new RuntimeException("Customer does not exist");
             if (customer.id().equals(payment.payer().customerId())) //really just checking the customer exists...
                 if (mandate.mandateId().equals(payment.payer().mandateId()))

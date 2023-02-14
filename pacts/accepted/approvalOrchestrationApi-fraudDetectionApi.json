@@ -1,0 +1,44 @@
+{
+  "consumer": {
+    "name": "approvalOrchestrationApi"
+  },
+  "interactions": [
+    {
+      "description": "Fraud detection request",
+      "providerStates": [
+        {
+          "name": "test state"
+        }
+      ],
+      "request": {
+        "body": {
+          "amount": "100.0",
+          "fromCustomerId": "fromCustomerId",
+          "toCustomerId": "toCustomerId"
+        },
+        "method": "POST",
+        "path": "/fraud"
+      },
+      "response": {
+        "body": {
+          "fraud": false
+        },
+        "headers": {
+          "Content-Type": "application/json; charset=utf-8"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.21"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "fraudDetectionApi"
+  }
+}

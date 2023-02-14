@@ -22,7 +22,7 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 @ExtendWith(SpringExtension.class)
 @Provider("mandatesApi")
 //@PactBroker(url = "https://validoc.pactflow.io")
-@PactFolder("../../pacts")
+@PactFolder("../../pacts/accepted")
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @PropertySources({@PropertySource("classpath:application.properties"), @PropertySource("classpath:testing.properties")})
 @EnableConfigurationProperties

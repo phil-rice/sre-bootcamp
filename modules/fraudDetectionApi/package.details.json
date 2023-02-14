@@ -6,9 +6,10 @@
   },
   "links":       [],
   "sre":         {
-    "port":     8092,
-    "verb":     "Get",
-    "endpoint": "/fraud"
+    "port":         8092,
+    "verb":         "Get",
+    "endpoint":     "/fraud",
+    "providerport": 8074
   },
   "guards":      {
     "compile": true,

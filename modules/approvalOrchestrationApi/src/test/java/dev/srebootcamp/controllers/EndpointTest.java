@@ -12,6 +12,7 @@ import au.com.dius.pact.core.model.annotations.PactDirectory;
 import au.com.dius.pact.provider.spring.junit5.PactVerificationSpringProvider;
 import dev.srebootcamp.clients.AuditClient;
 import dev.srebootcamp.clients.CustomerClient;
+import dev.srebootcamp.clients.FraudClient;
 import dev.srebootcamp.clients.MandateClient;
 import dev.srebootcamp.domain.payments.TestIdGenerator;
 import dev.srebootcamp.domain.payments.TestIdGeneratorConfig;
@@ -43,7 +44,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @AutoConfigureMockMvc
 @SpringBootTest
 @Import(TestIdGeneratorConfig.class)
-@PactDirectory("../../pacts")
+@PactDirectory("../../pacts/new")
 @ExtendWith(PactConsumerTestExt.class)
 public class EndpointTest {
 
@@ -62,6 +63,9 @@ public class EndpointTest {
 
     @Autowired
     CustomerClient customerClient;
+
+    @Autowired
+    FraudClient fraudClient;
 
     RequestResponsePact createAuditPact(PactDslWithProvider builder, int status, String sentBody) {
         return builder
@@ -99,11 +103,13 @@ public class EndpointTest {
     @BeforeEach
     public void setup(@ForProvider("auditApi") MockServer auditServer,
                       @ForProvider("mandatesApi") MockServer mandateServer,
-                      @ForProvider("customerRecordsApi") MockServer customerServer) {
+                      @ForProvider("customerRecordsApi") MockServer customerServer,
+                      @ForProvider("fraudDetectionApi") MockServer fraudServer) {
         idGenerator.reset();
         auditClient.auditClientUrl = auditServer.getUrl();
         mandateClient.mandateClientUrl = mandateServer.getUrl();
         customerClient.customerClientUrl = customerServer.getUrl();
+        fraudClient.fraudClientUrl = fraudServer.getUrl();
     }
 
     @Pact(consumer = "approvalOrchestrationApi", provider = "auditApi")
@@ -197,8 +203,28 @@ public class EndpointTest {
                 .toPact();
     }
 
+    @Pact(consumer = "approvalOrchestrationApi", provider = "fraudDetectionApi")
+    public RequestResponsePact fraudDetectionPactForPaymentAccept(PactDslWithProvider builder) {
+        return builder
+                .given("test state")
+                .uponReceiving("Fraud detection request")
+                .path("/fraud")
+                .method("POST")
+                .body(detectFraudDataJson)
+                .willRespondWith()
+                .status(200)
+                .body(detectFraudResponseJson)
+                .headers(Map.of("Content-Type", "application/json; charset=utf-8"))
+                .toPact();
+    }
+
+
     @PactTestFor(providerName = "approvalOrchestrationApi",
-            pactMethods = {"pactForPaymentAccept", "mandatePactForPaymentAccept", "customerPactForPaymentAccept"})
+            pactMethods = {
+                    "pactForPaymentAccept",
+                    "mandatePactForPaymentAccept",
+                    "customerPactForPaymentAccept",
+                    "fraudDetectionPactForPaymentAccept"})
     @Test
     public void test_payment_payment_accept() throws Exception {
         basket.putForTests(paymentId, payment);
