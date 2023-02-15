@@ -1,11 +1,11 @@
-package ${group}.${packageDetails.name};
+package dev.srebootcamp.customerRecordsApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ${packageDetails.name|toFirstUpper}Application {
+public class CustomerRecordsApiApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(${packageDetails.name|toFirstUpper}Application.class, args);
+		SpringApplication.run(CustomerRecordsApiApplication.class, args);
 	}
 }

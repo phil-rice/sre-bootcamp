@@ -1,4 +1,4 @@
-package ${group}.${packageDetails.name}.controllers;
+package dev.srebootcamp.auditApi.controllers;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,17 +7,18 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ${packageDetails.name|toFirstUpper}ControllerTest {
+public class AuditApiControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
     @Test
-    public void test_${packageDetails.name}_endpoint() throws Exception {
-        mockMvc.perform(get("${packageDetails.sre.endpoint}"))
+    public void test_auditApi_endpoint() throws Exception {
+        mockMvc.perform(post("/audit").content("log message"))
                 .andExpect(status().isOk());
     }
 }

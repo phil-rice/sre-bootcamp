@@ -9,11 +9,11 @@
       "templated": "{{}}"
     },
     "src/main/java/dev/srebootcamp/ApiApplication.java":             {
-      "target":    "src/main/java/dev/srebootcamp/ApiApplication.java",
+      "target":    "src/main/java/${group|toPackage}/${packageDetails.name}/${packageDetails.name|toFirstUpper}Application.java",
       "templated": "${}"
     },
     "src/main/java/dev/srebootcamp/controllers/MockController.java": {
-      "target":    "src/main/java/dev/srebootcamp/controllers/MockController.java",
+      "target":    "src/main/java/${group|toPackage}/${packageDetails.name}/controllers/${packageDetails.name|toFirstUpper}Controller.java",
       "sample":    true,
       "templated": "${}"
     },
@@ -22,7 +22,7 @@
       "templated": "${}"
     },
     "src/test/java/dev/srebootcamp/controllers/EndpointTest.java":   {
-      "target":    "src/test/java/dev/srebootcamp/controllers/EndpointTest.java",
+      "target":    "src/test/java/${group|toPackage}/${packageDetails.name}/controllers/${packageDetails.name|toFirstUpper}ControllerTest.java",
       "sample":    true,
       "templated": "${}"
     },

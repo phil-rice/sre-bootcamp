@@ -1,5 +1,7 @@
-package ${group}.${packageDetails.name}.controllers;
+package dev.srebootcamp.fraudDetectionApi.controllers;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import dev.srebootcamp.fraudDetectionApi.domain.DetectFraudData;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -7,17 +9,23 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class ${packageDetails.name|toFirstUpper}ControllerTest {
+public class FraudDetectionApiControllerTest {
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    ObjectMapper mapper;
+
+    DetectFraudData data = new DetectFraudData("12", "23", "100");
+
     @Test
-    public void test_${packageDetails.name}_endpoint() throws Exception {
-        mockMvc.perform(get("${packageDetails.sre.endpoint}"))
+    public void test_fraudDetectionApi_endpoint() throws Exception {
+        mockMvc.perform(post("/fraud").content(mapper.writeValueAsString(data)).contentType("application/json"))
                 .andExpect(status().isOk());
     }
 }

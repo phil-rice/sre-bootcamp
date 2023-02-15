@@ -1,11 +1,11 @@
-package ${group}.${packageDetails.name};
+package dev.srebootcamp.fraudDetectionApi;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ${packageDetails.name|toFirstUpper}Application {
+public class FraudDetectionApiApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(${packageDetails.name|toFirstUpper}Application.class, args);
+		SpringApplication.run(FraudDetectionApiApplication.class, args);
 	}
 }
