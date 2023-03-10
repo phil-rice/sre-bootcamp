@@ -1,5 +1,5 @@
 {
-  "template":    "springboot-library",
+  "template":    "springboot-test-library",
   "name":        "sreBootCamp",
   "description": "The 'whole application' for such things as testing, etc.",
   "mvn":         {

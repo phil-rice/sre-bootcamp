@@ -35,7 +35,7 @@ public class LoginApiControllerTest {
     public RequestResponsePact createPactHappyPath(PactDslWithProvider builder) {
         return builder
                 .given("test state")
-                .uponReceiving("EndpointTest happy path")
+                .uponReceiving("A login request")
                 .path("/authentication")
                 .method("POST")
                 .body("{\"username\":\"admin\",\"password\":\"admin\"}")

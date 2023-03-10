@@ -17,7 +17,7 @@
     "typescript": "@laoban@/templates/typescript_405",
     "typescript_react": "@laoban@/templates/typescript_react",
     "springboot-api": "templates/springboot-api",
-    "springboot-library": "templates/springboot-library"
+    "springboot-test-library": "templates/springboot-test-library"
   },
   "variables": {
     "group": "dev.srebootcamp"
@@ -33,30 +33,6 @@
         {
           "guard": "${packageDetails.sre.port}",
           "command": "js:process.cwd().padEnd(60) + '${packageDetails.sre.verb}'.padEnd(7) + '${packageDetails.sre.port}'.padEnd(6) + '   ${packageDetails.sre.endpoint}'.padEnd(30) + '${packageDetails.sre.dockerName}:latest'"
-        }
-      ]
-    },
-    "mvn-test": {
-      "description": "runs all the mvn tests",
-      "inLinksOrder": true,
-      "commands": [
-        {
-          "guard": "${packageDetails.guards.mvn}",
-          "command": "mvn test",
-          "name": "test",
-          "status": true
-        }
-      ]
-    },
-    "mvn-verify": {
-      "description": "runs all the mvn integration tests",
-      "inLinksOrder": true,
-      "commands": [
-        {
-          "guard": "${packageDetails.guards.mvn}",
-          "command": "mvn verify",
-          "name": "verify",
-          "status": true
         }
       ]
     },

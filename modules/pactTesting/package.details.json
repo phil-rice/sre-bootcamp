@@ -1,5 +1,5 @@
 {
-  "template":    "springboot-library",
+  "template":    "springboot-test-library",
   "name":        "pactTesting",
   "description": "Utilities to help with pact testing",
   "mvn":         {

@@ -5,8 +5,10 @@
       "templated": "{{}}"
     },
     "pom.xml":                                                       {
-      "target":    "pom.xml",
-      "templated": "{{}}"
+      "target":      "pom.xml",
+      "templated":   "{{}}",
+      "postProcess": "xmlMergeInto($packageDetails.mvn)",
+      "xmlArrays":   ["project.dependencies.dependency", "project.dependencyManagement.dependencies.dependency"]
     },
     "src/main/java/dev/srebootcamp/ApiApplication.java":             {
       "target":    "src/main/java/${group|toPackage}/${packageDetails.name}/${packageDetails.name|toFirstUpper}Application.java",
@@ -31,7 +33,7 @@
       "target":    "src/test/resources/system_props.properties",
       "templated": "${}"
     },
-    "src/test/resources/testing.properties":                     {
+    "src/test/resources/testing.properties":                         {
       "file":      "src/test/resources/testing.properties",
       "target":    "src/test/resources/testing.properties",
       "templated": "${}"
