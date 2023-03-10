@@ -4,6 +4,25 @@
   },
   "interactions": [
     {
+      "description": "A login request",
+      "providerStates": [
+        {
+          "name": "test state"
+        }
+      ],
+      "request": {
+        "body": {
+          "password": "admin",
+          "username": "admin"
+        },
+        "method": "POST",
+        "path": "/authentication"
+      },
+      "response": {
+        "status": 200
+      }
+    },
+    {
       "description": "EndpointTest happy path",
       "providerStates": [
         {

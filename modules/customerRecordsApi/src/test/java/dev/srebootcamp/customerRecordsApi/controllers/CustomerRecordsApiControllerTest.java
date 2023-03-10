@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @ExtendWith(PactConsumerTestExt.class)
-@PactTestFor(providerName = "systemofrecords")
+@PactTestFor(providerName = "leo_location")
 @AutoConfigureMockMvc
 @PactDirectory("../../pacts/new")
 public class CustomerRecordsApiControllerTest {
@@ -34,7 +34,7 @@ public class CustomerRecordsApiControllerTest {
 
     String expectedBody ="{\"id\":\"fromCustomerId\",\"name\":\"Customer fromCustomerId\"}";
 
-    @Pact(provider = "systemofrecords", consumer = "customerRecordsApi")
+    @Pact(provider = "leo_location", consumer = "oms")
     public RequestResponsePact createPactHappyPath(PactDslWithProvider builder) {
         return builder
                 .given("test state")
