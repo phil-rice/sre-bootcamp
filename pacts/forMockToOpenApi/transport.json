@@ -1,0 +1,17 @@
+[
+  {
+    "truckId": "1",
+    "xPos": 1.0,
+    "yPos": 1.1
+  },
+  {
+    "truckId": "2",
+    "xPos": 2.0,
+    "yPos": 2.0
+  },
+  {
+    "truckId": "3",
+    "xPos": 3.0,
+    "yPos": 3.0
+  }
+]

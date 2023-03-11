@@ -35,6 +35,9 @@ public interface LocationFixture {
     static String driverAndVehiclesJson() throws JsonProcessingException {
         return new ObjectMapper().writeValueAsString(driverAndVehicles);
     }
+    static String driverAndVehiclesWithTrucksJson() throws JsonProcessingException {
+        return new ObjectMapper().writeValueAsString(driverAndVehiclesWithTrucks);
+    }
 
     static ISmartphoneClient testSmartphoneClient() {
         return () -> trucks;
