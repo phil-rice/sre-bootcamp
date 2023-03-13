@@ -1,0 +1,22 @@
+{
+  "template":    "springboot-api",
+  "name":        "location",
+  "description": "A demo of how to get stuff from database and return it as JSON",
+  "mvn":         {
+    "project": {
+      "dependencies": {
+        "dependency": [
+          {"groupId": "org.springframework", "artifactId": "spring-jdbc"},
+          {"groupId": "com.github.erosb", "artifactId": "everit-json-schema", "version": "1.14.2"}
+        ]
+      }
+    }
+  },
+  "links":       [],
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true,
+    "mvn":     true
+  }
+}

@@ -17,6 +17,6 @@ public class VehicleDriverTruckTest {
         var vdt = new VehicleDriverTruck();
         vdt.jdbcTemplate = jdbc;
         when(jdbc.queryForList(anyString())).thenReturn(driverAndVehiclesWithTrucks);
-        assertEquals(driverAndVehiclesWithTrucks, vdt.call());
+        assertEquals(driverAndVehiclesWithTrucks, vdt.getAll());
     }
 }

@@ -18,7 +18,7 @@ abstract public class GenericGetClient<T> {
         this.headers.add("Content-Type", "application/json");
     }
 
-    public T call()  {
+    public T retrieveTrucksAndPosition()  {
         HttpEntity<String> requestEntity = new HttpEntity<>(headers);
         return rest.<T>exchange(clientUrl, HttpMethod.GET, requestEntity, (Class<T>) clazz).getBody();
     }

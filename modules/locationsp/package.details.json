@@ -1,0 +1,23 @@
+{
+  "template":    "springboot-api",
+  "name":        "locationsp",
+  "description": "An example of how we get data from soap and shrink it in size",
+  "mvn":         {
+    "project": {
+      "dependencies": {
+        "dependency": [
+        ]
+      }
+    }
+  },
+  "sre":         {
+    "port":         8093,
+    "providerport": 8071
+  },
+  "links":       [],
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true
+  }
+}

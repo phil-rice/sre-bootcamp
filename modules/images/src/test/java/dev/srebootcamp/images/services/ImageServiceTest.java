@@ -18,29 +18,13 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 class ImageServiceTest {
 
-//    @Autowired
-//    JdbcTemplate template;
-
-
     static JdbcTemplate template = new JdbcTemplate(ds);
 
     @BeforeAll
     public static void setup() {
-        template.execute("drop table images if exists");
-        template.execute("CREATE TABLE images (compoundId VARCHAR(255),id VARCHAR(255), url VARCHAR(255))");
-        PreparedStatementCallback callback = (ps) -> {
-            for (Image im : combine(ImagesFixture.imagesc1, ImagesFixture.imagesc2)) {
-                ps.setString(1, im.compoundId());
-                ps.setString(2, im.id());
-                ps.setString(3, im.url());
-                ps.addBatch();
-            }
-            ps.executeBatch();
-            return null;
-        };
-        template.execute("INSERT INTO images(compoundId,id, url) VALUES (?,?,?)", callback);
-
+        putImagesForC1andC2IntoTheDatabase(template);
     }
+
 
     public ImageService imageService() {
         JdbcTemplate template = new JdbcTemplate(ds);

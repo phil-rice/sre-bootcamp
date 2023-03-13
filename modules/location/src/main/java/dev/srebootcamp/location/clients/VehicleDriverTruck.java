@@ -13,7 +13,7 @@ public class VehicleDriverTruck implements IVehicleDriverTruck {
     public JdbcTemplate jdbcTemplate = new JdbcTemplate();
 
     @Override
-    public List<Map<String, Object>> call() {
+    public List<Map<String, Object>> get() {
         String sql = "SELECT * FROM driver_and_vehicles";
         return jdbcTemplate.queryForList(sql);
     }

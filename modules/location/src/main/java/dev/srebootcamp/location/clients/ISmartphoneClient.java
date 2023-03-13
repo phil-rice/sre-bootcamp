@@ -4,5 +4,6 @@ import java.util.List;
 import java.util.Map;
 
 public interface ISmartphoneClient {
-    List<Map<String, Object>> call();
+    /** A truck id and it's position */
+    List<Map<String, Object>> retrieveTrucksAndPosition();
 }

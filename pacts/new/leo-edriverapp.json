@@ -1,0 +1,53 @@
+{
+  "consumer": {
+    "name": "leo"
+  },
+  "interactions": [
+    {
+      "description": "a request for the truck/vehicle locations",
+      "providerStates": [
+        {
+          "name": "test state"
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "path": "/trucklocations"
+      },
+      "response": {
+        "body": [
+          {
+            "truckId": "1",
+            "xPos": 1.0,
+            "yPos": 1.0
+          },
+          {
+            "truckId": "2",
+            "xPos": 2.0,
+            "yPos": 2.0
+          },
+          {
+            "truckId": "3",
+            "xPos": 3.0,
+            "yPos": 3.0
+          }
+        ],
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "status": 200
+      }
+    }
+  ],
+  "metadata": {
+    "pact-jvm": {
+      "version": "4.2.21"
+    },
+    "pactSpecification": {
+      "version": "3.0.0"
+    }
+  },
+  "provider": {
+    "name": "edriverapp"
+  }
+}

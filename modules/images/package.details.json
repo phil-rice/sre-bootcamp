@@ -1,0 +1,27 @@
+{
+  "template":    "springboot-api",
+  "name":        "images",
+  "description": "crud webservices for images",
+  "mvn":         {
+    "project": {
+      "dependencies": {
+        "dependency": [
+          {"groupId": "org.springframework", "artifactId": "spring-jdbc"},
+          {"groupId": "com.github.erosb", "artifactId": "everit-json-schema", "version": "1.14.2", "scope": "test"},
+          {"groupId": "com.h2database", "artifactId": "h2", "version": "2.1.214", "scope": "test"},
+          {"groupId": "org.apache.commons", "artifactId": "commons-dbcp2", "version": "2.9.0"}
+        ]
+      }
+    }
+  },
+  "sre":         {
+    "port":         8093,
+    "providerport": 8071
+  },
+  "links":       [],
+  "guards":      {
+    "compile": true,
+    "publish": false,
+    "test":    true
+  }
+}

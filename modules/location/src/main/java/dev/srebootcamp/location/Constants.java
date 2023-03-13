@@ -8,4 +8,6 @@ public interface Constants {
     String driveIdDbName = "driverId";
     String vehicleIdDbName = "vehicleId";
     String truckIdDbName = "truckIdInDb";
+
+    String customerIdDbName = "customerId";
 }

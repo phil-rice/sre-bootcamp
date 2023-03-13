@@ -43,6 +43,6 @@ public class SmartphoneClientContractTest {
     @ExtendWith(PactVerificationSpringProvider.class)
     public void test_mandates_api(MockServer server) {
         SmartphoneClient client = new SmartphoneClient(server.getUrl() + "/trucklocations");
-        assertEquals(trucks, client.call());
+        assertEquals(trucks, client.retrieveTrucksAndPosition());
     }
 }

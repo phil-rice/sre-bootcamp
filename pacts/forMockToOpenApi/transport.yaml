@@ -1,0 +1,14 @@
+type: array
+items:
+  type: object
+  properties:
+    truckId:
+      type: string
+      example: "1"
+    xPos:
+      type: integer
+      format: int32
+      example: 1
+    yPos:
+      type: number
+      example: 1.1

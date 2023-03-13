@@ -1,0 +1,18 @@
+{
+  "template":    "springboot-api",
+  "name":        "entity",
+  "description": "Name / Value and Event store",
+  "sre":         {
+    "port":         8091,
+    "verb":         "Get",
+    "endpoint":     "/entity",
+    "providerport": 8072
+  },
+  "links":       [],
+  "guards":      {
+    "mvn":     true,
+    "compile": true,
+    "publish": false,
+    "test":    true
+  }
+}

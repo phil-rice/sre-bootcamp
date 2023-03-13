@@ -5,11 +5,15 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import dev.srebootcamp.images.domain.Image;
 import dev.srebootcamp.images.services.IImageService;
 import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCallback;
 
 import javax.sql.DataSource;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Function;
+
+import static dev.srebootcamp.images.utils.ListHelpers.combine;
 
 public interface ImagesFixture {
     static DataSource ds = DataSourceBuilder.create()
@@ -18,6 +22,22 @@ public interface ImagesFixture {
             .username("sa")
             .password("")
             .build();
+    static void putImagesForC1andC2IntoTheDatabase(JdbcTemplate template) {
+        template.execute("drop table images if exists");
+        template.execute("CREATE TABLE images (compoundId VARCHAR(255),id VARCHAR(255), url VARCHAR(255))");
+        PreparedStatementCallback callback = (ps) -> {
+            for (Image im : combine(ImagesFixture.imagesc1, ImagesFixture.imagesc2)) {
+                ps.setString(1, im.compoundId());
+                ps.setString(2, im.id());
+                ps.setString(3, im.url());
+                ps.addBatch();
+            }
+            ps.executeBatch();
+            return null;
+        };
+        template.execute("INSERT INTO images(compoundId,id, url) VALUES (?,?,?)", callback);
+    }
+
 
     Image im1 = new Image("c1", "url1", "id1");
     Image im1c2 = new Image("c2", "url1", "id1");
